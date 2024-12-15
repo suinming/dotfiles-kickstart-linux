@@ -28,7 +28,8 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # export path variable
-export PATH=$PATH:/home/suinming/.local/share
+export PATH="$/home/suinming/.local/share:PATH"
+export PATH="$/home/suinming/.local/bin:PATH"
 
 # update packages
 alias uu="sudo apt update -y && sudo apt upgrade -y"
@@ -56,9 +57,6 @@ alias gwl="git worktree list"
 alias gwa="git worktree add \$1 \$2" # there might be one or two arguments
 alias gwr="git worktree remove \$1"
 
-# zoxide
-eval "$(zoxide init zsh)"
-
 # pyenv
 # export PATH="$HOME/.pyenv/bin:$PATH"
 # eval "$(pyenv init -)"
@@ -72,3 +70,6 @@ eval "$(starship init zsh)"
 
 # kulala-fmt
 alias kulala-fmt="~/Downloads/kulala-fmt-linux"
+
+# zoxide
+eval "$(zoxide init zsh)"
