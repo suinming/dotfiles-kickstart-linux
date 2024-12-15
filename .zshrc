@@ -28,8 +28,9 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # export path variable
-export PATH="$/home/suinming/.local/share:PATH"
-export PATH="$/home/suinming/.local/bin:PATH"
+export PATH="/home/suinming/.local/share:$PATH"
+export PATH="/home/suinming/.local/bin:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/.local/bin:$PATH"
 
 # update packages
 alias uu="sudo apt update -y && sudo apt upgrade -y"
@@ -73,3 +74,7 @@ alias kulala-fmt="~/Downloads/kulala-fmt-linux"
 
 # zoxide
 eval "$(zoxide init zsh)"
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4778ec1 (fix: export /usr/bin PATH)
