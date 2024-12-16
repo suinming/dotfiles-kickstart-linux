@@ -32,6 +32,9 @@ export PATH="/home/suinming/.local/share:$PATH"
 export PATH="/home/suinming/.local/bin:$PATH"
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/.local/bin:$PATH"
 
+# zsh-autosuggestions
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # update packages
 alias uu="sudo apt update -y && sudo apt upgrade -y"
 
