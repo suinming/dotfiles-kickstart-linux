@@ -41,6 +41,9 @@ alias uu="sudo apt update -y && sudo apt upgrade -y"
 # use eza to replace ls 
 alias ls="eza"
 
+# use zoxide to replace cd
+alias cd="z"
+
 # trash cli
 alias tp="trash-put"
 alias tm="trash-empty"
