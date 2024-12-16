@@ -61,6 +61,9 @@ alias gwl="git worktree list"
 alias gwa="git worktree add \$1 \$2" # there might be one or two arguments
 alias gwr="git worktree remove \$1"
 
+# kulala-fmt
+alias kulala-fmt="~/Downloads/kulala-fmt-linux"
+
 # pyenv
 # export PATH="$HOME/.pyenv/bin:$PATH"
 # eval "$(pyenv init -)"
@@ -72,12 +75,5 @@ alias gwr="git worktree remove \$1"
 # start ship 
 eval "$(starship init zsh)"
 
-# kulala-fmt
-alias kulala-fmt="~/Downloads/kulala-fmt-linux"
-
 # zoxide
 eval "$(zoxide init zsh)"
-<<<<<<< HEAD
-=======
-
->>>>>>> 4778ec1 (fix: export /usr/bin PATH)
