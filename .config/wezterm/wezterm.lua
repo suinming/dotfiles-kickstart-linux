@@ -7,10 +7,34 @@ local config = {}
 config.font = wezterm.font("JetBrainsMono-Bold")
 config.font_size = 16
 config.colors = theme.colors()
+config.hide_tab_bar_if_only_one_tab = false
+config.use_fancy_tab_bar = false
 
--- tiling window manager
-config.tiling_desktop_environments = {
-  'X11 i3',
+local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
+
+local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
+
+config.tab_bar_style = {
+  active_tab_left = wezterm.format {
+    { Background = { Color = '#0b0022' } },
+    { Foreground = { Color = '#2b2042' } },
+    { Text = SOLID_LEFT_ARROW },
+  },
+  active_tab_right = wezterm.format {
+    { Background = { Color = '#0b0022' } },
+    { Foreground = { Color = '#2b2042' } },
+    { Text = SOLID_RIGHT_ARROW },
+  },
+  inactive_tab_left = wezterm.format {
+    { Background = { Color = '#0b0022' } },
+    { Foreground = { Color = '#1b1032' } },
+    { Text = SOLID_LEFT_ARROW },
+  },
+  inactive_tab_right = wezterm.format {
+    { Background = { Color = '#0b0022' } },
+    { Foreground = { Color = '#1b1032' } },
+    { Text = SOLID_RIGHT_ARROW },
+  },
 }
 
 -- print the workspace name at the upper right
@@ -36,9 +60,6 @@ config.keys = {
 }
 
 -- tab
-config.hide_tab_bar_if_only_one_tab = false
-config.use_fancy_tab_bar = false
-
 local function get_current_working_dir(tab)
   local current_dir = tab.active_pane and tab.active_pane.current_working_dir or { file_path = "" }
   local HOME_DIR = string.format("file://%s", os.getenv("HOME"))
