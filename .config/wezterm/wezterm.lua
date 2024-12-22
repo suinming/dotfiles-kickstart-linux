@@ -5,7 +5,6 @@ local config = {}
 config.font = wezterm.font("JetBrainsMono-Bold")
 config.font_size = 16
 config.colors = theme.colors()
-config.default_domain = 'WSL:Ubuntu'
 
 -- workspace switcher plugin
 local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
