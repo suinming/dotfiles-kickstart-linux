@@ -76,6 +76,24 @@ alias kulala-fmt="~/Downloads/kulala-fmt-linux"
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# sesh
+function list-sesh-sessions() {
+  {
+    exec </dev/tty
+    exec <&1
+    local session
+    session=$(sesh list -t -c | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
+    zle reset-prompt > /dev/null 2>&1 || true
+    [[ -z "$session" ]] && return
+    sesh connect $session
+  }
+}
+
+zle     -N           list-sesh-sessions
+bindkey -M emacs 'S' list-sesh-sessions
+bindkey -M vicmd 'S' list-sesh-sessions
+bindkey -M viins 'S' list-sesh-sessions
+
 # start ship 
 eval "$(starship init zsh)"
 
