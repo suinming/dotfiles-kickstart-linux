@@ -1,6 +1,8 @@
 require("config.lazy")
 
 vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.expandtab = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -21,8 +23,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- remove line number in nvim terminal
-vim.api.nvim_create_autocmd('TermOpen', {
-  group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
+vim.api.nvim_create_autocmd("TermOpen", {
+  group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),
   callback = function()
     vim.opt.number = false
     vim.opt.relativenumber = false
