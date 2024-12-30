@@ -50,7 +50,6 @@ return {
           capabilities = capabilities,
         })
       else
-        print("Configuring ts_ls, volar...")
         lspconfig.ts_ls.setup({
           capabilities = capabilities,
           init_options = {
