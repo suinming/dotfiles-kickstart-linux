@@ -18,12 +18,7 @@ return {
     templates = {
       subdir = "templates",
     },
-    completion = {
-      -- Where to put new notes. Valid options are
-      --  * "current_dir" - put new notes in same directory as the current buffer.
-      --  * "notes_subdir" - put new notes in the default notes subdirectory.
-      new_notes_location = "notes_subdir",
-    },
+    new_notes_location = "notes_subdir",
     -- Optional, boolean or a function that takes a filename and returns a boolean.
     -- `true` indicates that you don't want obsidian.nvim to manage frontmatter.
     disable_frontmatter = true,
