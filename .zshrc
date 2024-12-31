@@ -23,23 +23,32 @@ zstyle ':completion:*' menu select=long
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
-
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-# export path variable
-export PATH="/home/suinming/.local/share:$PATH"
-export PATH="/home/suinming/.local/bin:$PATH"
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$HOME/.local/bin:$PATH"
-export PATH=$PATH:/usr/local/go/bin
-export PATH="$HOME/neovim/bin:$PATH"
-export PATH=$PATH:/home/suinming/lua-language-server/bin
+# =============================
+# Paths
+# =============================
 
+# add custom directories to PATH
+export PATH="$HOME/.local/share:$HOME/.local/bin:$PATH"
+
+# add myscripts directories to PATH
+export PATH="$HOME/myscripts:$PATH"
+
+# add system and Go directories
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/go/bin:$PATH"
+
+# add Neovim and Lua Language Server directories
+export PATH="$HOME/neovim/bin:/home/suinming/lua-language-server/bin:$PATH"
+
+# nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-# zsh-autosuggestions
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# =============================
+# Aliases
+# =============================
 
 # update packages
 alias uu="sudo apt update -y && sudo apt upgrade -y"
@@ -70,8 +79,9 @@ alias gwl="git worktree list"
 alias gwa="git worktree add \$1 \$2" # there might be one or two arguments
 alias gwr="git worktree remove \$1"
 
-# kulala-fmt
-alias kulala-fmt="~/Downloads/kulala-fmt-linux"
+# =============================
+# Plugins
+# =============================
 
 # pyenv
 # export PATH="$HOME/.pyenv/bin:$PATH"
@@ -80,6 +90,9 @@ alias kulala-fmt="~/Downloads/kulala-fmt-linux"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# zsh-autosuggestions
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # sesh
 function list-sesh-sessions() {
