@@ -53,7 +53,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # update packages
 alias uu="sudo apt update -y && sudo apt upgrade -y"
 
-# use eza to replace ls 
+# use eza to replace ls
 alias ls="eza"
 
 # use zoxide to replace cd
@@ -63,8 +63,8 @@ alias cd="z"
 alias tp="trash-put"
 alias tm="trash-empty"
 alias tl="trash-list"
- 
-# git 
+
+# git
 alias gs='git status'
 alias gbr="git branch"
 alias gco="git checkout \$1 \$2"
@@ -74,7 +74,7 @@ alias gcm="git commit"
 alias gp="git push origin \$1"
 alias gpl="git pull origin \$1"
 alias gac="git add --all && git commit"
-alias gwc="bash $HOME/dotfiles/myscripts/scripts/gwc.sh" # execute git worktree clone bash script
+alias gwc="bash $HOME/myscripts/gwc.sh" # execute git worktree clone bash script
 alias gwl="git worktree list"
 alias gwa="git worktree add \$1 \$2" # there might be one or two arguments
 alias gwr="git worktree remove \$1"
@@ -112,7 +112,7 @@ bindkey -M emacs 'S' list-sesh-sessions
 bindkey -M vicmd 'S' list-sesh-sessions
 bindkey -M viins 'S' list-sesh-sessions
 
-# start ship 
+# start ship
 eval "$(starship init zsh)"
 
 # zoxide
