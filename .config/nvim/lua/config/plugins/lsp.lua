@@ -1,8 +1,12 @@
 return {
   {
+    "nanotee/sqls.nvim"
+  },
+  {
     "neovim/nvim-lspconfig",
     dependencies = {
       "saghen/blink.cmp",
+      "nanotee/sqls.nvim",
       {
         "folke/lazydev.nvim",
         opts = {
@@ -14,15 +18,35 @@ return {
     },
     config = function()
       local capabilities = require("blink.cmp").get_lsp_capabilities()
+      capabilities.textDocument.foldingRange = {
+          dynamicRegistration = false,
+          lineFoldingOnly = true
+      }
       local lspconfig = require("lspconfig")
       local lsp_servers = { "lua_ls", "emmet_language_server", "marksman", "ruff" }
-
       for _, lsp in ipairs(lsp_servers) do
         lspconfig[lsp].setup({
           capabilities = capabilities,
         })
       end
-
+      -- sqls
+      lspconfig.sqls.setup{
+          cmd = {"/home/suinming/go/bin/sqls"},
+          on_attach = function(client, bufnr)
+              require('sqls').on_attach(client, bufnr)
+          end,
+          capabilities = capabilities,
+          settings = {
+            sqls = {
+              connections = {
+                {
+                  driver = 'sqlite3',
+                  dataSourceName = '/home/suinming/data/tw_db.sqlite',
+                },
+              },
+            },
+          },
+      }
       -- helper function to determine if Vue 2 is used
       local function is_vue2_project()
         local package_json_path = vim.fn.getcwd() .. "/package.json"
@@ -44,7 +68,6 @@ return {
 
       -- configure the appropriate LSP based on the Vue version
       if is_vue2_project() then
-        print("Detected Vue 2 project. Configuring vuels...")
         -- vue2
         lspconfig.vuels.setup({
           capabilities = capabilities,
