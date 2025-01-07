@@ -30,17 +30,23 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # Paths
 # =============================
 
-# add custom directories to PATH
+# custom directories
 export PATH="$HOME/.local/share:$HOME/.local/bin:$PATH"
 
-# add myscripts directories to PATH
+# myscripts directories
 export PATH="$HOME/myscripts:$PATH"
 
-# add system and Go directories
+# go
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/go/bin:$PATH"
 
-# add Neovim and Lua Language Server directories
+# rust cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Neovim and Lua Language Server
 export PATH="$HOME/neovim/bin:/home/suinming/lua-language-server/bin:$PATH"
+
+# sqlite3.47.2
+export PATH="$HOME/Downloads/sqlite-autoconf-3470200:$PATH"
 
 # nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -84,9 +90,9 @@ alias gwr="git worktree remove \$1"
 # =============================
 
 # pyenv
-# export PATH="$HOME/.pyenv/bin:$PATH"
-# eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -117,3 +123,5 @@ eval "$(starship init zsh)"
 
 # zoxide
 eval "$(zoxide init zsh)"
+
+. "$HOME/.local/bin/env"
