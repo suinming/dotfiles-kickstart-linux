@@ -1,6 +1,6 @@
 return {
   {
-    "nanotee/sqls.nvim"
+    "nanotee/sqls.nvim",
   },
   {
     "neovim/nvim-lspconfig",
@@ -19,34 +19,34 @@ return {
     config = function()
       local capabilities = require("blink.cmp").get_lsp_capabilities()
       capabilities.textDocument.foldingRange = {
-          dynamicRegistration = false,
-          lineFoldingOnly = true
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
       }
       local lspconfig = require("lspconfig")
-      local lsp_servers = { "lua_ls", "emmet_language_server", "marksman", "ruff" }
+      local lsp_servers = { "lua_ls", "emmet_language_server", "marksman", "ruff", "pyright" }
       for _, lsp in ipairs(lsp_servers) do
         lspconfig[lsp].setup({
           capabilities = capabilities,
         })
       end
       -- sqls
-      lspconfig.sqls.setup{
-          cmd = {"/home/suinming/go/bin/sqls"},
-          on_attach = function(client, bufnr)
-              require('sqls').on_attach(client, bufnr)
-          end,
-          capabilities = capabilities,
-          settings = {
-            sqls = {
-              connections = {
-                {
-                  driver = 'sqlite3',
-                  dataSourceName = '/home/suinming/data/tw_db.sqlite',
-                },
+      lspconfig.sqls.setup({
+        cmd = { "/home/suinming/go/bin/sqls" },
+        on_attach = function(client, bufnr)
+          require("sqls").on_attach(client, bufnr)
+        end,
+        capabilities = capabilities,
+        settings = {
+          sqls = {
+            connections = {
+              {
+                driver = "sqlite3",
+                dataSourceName = "/home/suinming/data/tw_db.sqlite",
               },
             },
           },
-      }
+        },
+      })
       -- helper function to determine if Vue 2 is used
       local function is_vue2_project()
         local package_json_path = vim.fn.getcwd() .. "/package.json"
@@ -90,6 +90,12 @@ return {
           capabilities = capabilities,
         })
       end
+      vim.keymap.set("n", "K", vim.lsp.buf.hover)
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+      vim.keymap.set("n", "gt", vim.lsp.buf.type_definition)
+      vim.keymap.set("n", "gr", vim.lsp.buf.references)
+      vim.keymap.set("n", "ca", vim.lsp.buf.code_action)
+      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
     end,
   },
 }
