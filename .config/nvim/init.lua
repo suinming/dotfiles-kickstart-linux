@@ -35,22 +35,6 @@ vim.o.foldenable = true
 -- source current file
 vim.keymap.set("n", "<space>x", "<cmd>source %<CR>")
 
--- open small nvim terminal at the bottom
-local job_id = 0
-vim.keymap.set("n", "<space>st", function()
-  vim.cmd.vnew()
-  vim.cmd.term()
-  vim.cmd.wincmd("J") -- put terminal at the bottom
-  vim.api.nvim_win_set_height(0, 5)
-  job_id = vim.bo.channel
-end)
-
--- send command to nvim terminal
-vim.keymap.set("n", "<space>cmd", function()
-  -- example: send ls -al command
-  vim.fn.chansend(job_id, { "ls -al\r\n" })
-end)
-
 -- ============================================
 -- autocmd
 -- ============================================
@@ -63,14 +47,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
   callback = function()
     vim.highlight.on_yank()
-  end,
-})
-
--- remove line number in nvim terminal
-vim.api.nvim_create_autocmd("TermOpen", {
-  group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),
-  callback = function()
-    vim.opt.number = false
-    vim.opt.relativenumber = false
   end,
 })

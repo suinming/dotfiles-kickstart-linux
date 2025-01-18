@@ -9,7 +9,7 @@ return {
       desc = "Diagnostics (Trouble)",
     },
     {
-      "<leader>xX",
+      "<leader>xl",
       "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
       desc = "Buffer Diagnostics (Trouble)",
     },
@@ -29,7 +29,7 @@ return {
       desc = "Location List (Trouble)",
     },
     {
-      "<leader>xQ",
+      "<leader>q",
       "<cmd>Trouble qflist toggle<cr>",
       desc = "Quickfix List (Trouble)",
     },
