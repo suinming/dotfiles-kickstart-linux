@@ -23,7 +23,7 @@ return {
         lineFoldingOnly = true,
       }
       local lspconfig = require("lspconfig")
-      local lsp_servers = { "lua_ls", "emmet_language_server", "marksman", "ruff", "pyright" }
+      local lsp_servers = { "lua_ls", "emmet_language_server", "marksman", "ruff", "pyright", "sourcekit" }
       for _, lsp in ipairs(lsp_servers) do
         lspconfig[lsp].setup({
           capabilities = capabilities,
